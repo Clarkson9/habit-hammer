@@ -1,6 +1,4 @@
-# Project Title
-
-Habit Hammer
+# Habit Hammer
 
 ## Overview
 
