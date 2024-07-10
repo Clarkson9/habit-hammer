@@ -7,6 +7,12 @@
 	gap: 1rem;
 }
 
+.habit-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
 .habit-modal {
 	border: none;
 	height: 30rem;

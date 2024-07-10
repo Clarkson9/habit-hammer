@@ -24,8 +24,12 @@ const HabitList = () => {
 					Authorization: `Bearer ${token}`,
 				},
 			})
-			.then((response) => console.log(response.data));
+			.then((response) => {
+				// console.log(response.data);
+				setHabitList(response.data);
+			});
 	}, []);
+	console.log(habitList);
 
 	const addHabitModal = useRef(null);
 	const editHabitModal = useRef(null);
@@ -64,10 +68,19 @@ const HabitList = () => {
 						Authorization: `Bearer ${token}`,
 					},
 				})
-				.then((response) => {
-					console.log(response.data);
+				.then(() => {
+					axios
+						.get("http://localhost:8080/habit", {
+							headers: {
+								Authorization: `Bearer ${token}`,
+							},
+						})
+						.then((response) => {
+							// console.log(response.data);
+							setHabitList(response.data);
+						});
+					// console.log(response.data);
 					toggleModal(addHabitModal);
-					// navigate("/list");
 				})
 				.catch((err) => {
 					console.log(err);
@@ -80,7 +93,25 @@ const HabitList = () => {
 		<main className="center-box">
 			<div className="habit-list-wrapper">
 				<ul className="habit-list">
-					<Habit />
+					{habitList[0]
+						? habitList.map((habit) => {
+								return (
+									<li className="habit-list-item" key={habit.id}>
+										<Habit habit={habit} />
+									</li>
+								);
+						  })
+						: "Loading..."}
+					{/* {activeVideo.comments.map((comment) => (
+						<li className="comment__container" key={comment.id}>
+							<Comment
+								handleDeleteComment={handleDeleteComment}
+								handleLikeComment={handleLikeComment}
+								comment={comment}
+								formatDate={formatDate}
+							/>
+						</li>
+					))} */}
 				</ul>
 				<button
 					type="button"
