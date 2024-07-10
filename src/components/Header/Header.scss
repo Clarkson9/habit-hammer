@@ -4,4 +4,11 @@
 .header {
 	display: flex;
 	justify-content: space-between;
+	background-color: $secondary-dark;
+	align-items: center;
+	padding: 1.5rem 2rem;
+}
+
+.logo {
+	font-size: 2rem;
 }

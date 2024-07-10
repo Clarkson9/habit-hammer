@@ -17,17 +17,23 @@ const HabitList = () => {
 	const navigate = useNavigate();
 
 	const token = localStorage.getItem("authToken");
+
 	useEffect(() => {
-		axios
-			.get("http://localhost:8080/habit", {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			})
-			.then((response) => {
-				// console.log(response.data);
-				setHabitList(response.data);
-			});
+		if (!token) {
+			navigate("/");
+		} else {
+			axios
+				.get("http://localhost:8080/habit", {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				})
+				.then((response) => {
+					// console.log(response.data);
+					setHabitList(response.data);
+				})
+				.catch((err) => console.log(err));
+		}
 	}, []);
 
 	const addHabitModal = useRef(null);
@@ -195,10 +201,15 @@ const HabitList = () => {
 							value={formValues.habit_why}
 							placeholder="Why"></input>
 						<div className="button-wrapper">
-							<button type="button" onClick={() => toggleModal(addHabitModal)}>
+							<button
+								className="button"
+								type="button"
+								onClick={() => toggleModal(addHabitModal)}>
 								Cancel
 							</button>
-							<button type="submit">+ Add new habit</button>
+							<button className="button" type="submit">
+								+ Add new habit
+							</button>
 						</div>
 					</form>
 				</dialog>

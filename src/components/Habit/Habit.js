@@ -3,6 +3,10 @@ import "./Habit.scss";
 import { useState, useRef } from "react";
 import axios from "axios";
 
+import deleteIcon from "../../assets/icons/delete-icon.svg";
+import editIcon from "../../assets/icons/edit-icon.svg";
+import checkIcon from "../../assets/icons/check-icon.svg";
+
 const Habit = ({
 	habit,
 	handleDeleteHabit,
@@ -81,29 +85,27 @@ const Habit = ({
 				className="delete-button"
 				type="button"
 				onClick={() => handleDeleteHabit(habit.id)}>
-				Delete
+				<img src={deleteIcon} alt="Delete icon" />
 			</button>
 			<div className="habit-details">
 				<div className="habit-details__name">
 					<p>Habit: {habit.habit_name}</p>
-					{/* <p>Example habit name</p> */}
-					<button
-						className="edit-button"
-						type="button"
-						onClick={() => toggleModal(editHabitModal)}>
-						Edit
-					</button>
 				</div>
 				<div className="habit-details__why">
 					<p>Why: {habit.habit_why}</p>
-					{/* <p>Example habit why</p> */}
 				</div>
 			</div>
+			<button
+				className="edit-button"
+				type="button"
+				onClick={() => toggleModal(editHabitModal)}>
+				<img src={editIcon} alt="Edit icon" />
+			</button>
 			<button
 				className={isToday(habit.last_complete) ? "hidden" : "complete-button"}
 				type="button"
 				onClick={() => handleCompleteHabit(habit.id)}>
-				Complete
+				<img src={checkIcon} alt="Check icon" />
 			</button>
 			<div className="habit-stats">
 				<div className="habit-stats__streak">
@@ -140,10 +142,15 @@ const Habit = ({
 						value={formValues.habit_why}
 						placeholder="Why"></input>
 					<div className="button-wrapper">
-						<button type="button" onClick={() => toggleModal(editHabitModal)}>
+						<button
+							className="button"
+							type="button"
+							onClick={() => toggleModal(editHabitModal)}>
 							Cancel
 						</button>
-						<button type="submit">Save</button>
+						<button className="button" type="submit">
+							Save
+						</button>
 					</div>
 				</form>
 			</dialog>

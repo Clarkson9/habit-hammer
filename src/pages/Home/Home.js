@@ -11,7 +11,7 @@ const Home = () => {
 
 	return (
 		<main className="center-box">
-			<div className="button-container">
+			<div className="entry-container">
 				<button
 					type="button"
 					className="button"
