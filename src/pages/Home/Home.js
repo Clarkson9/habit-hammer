@@ -10,7 +10,7 @@ const Home = () => {
 	};
 
 	return (
-		<div className="home-container">
+		<div className="center-box">
 			<div className="button-container">
 				<button
 					type="button"
