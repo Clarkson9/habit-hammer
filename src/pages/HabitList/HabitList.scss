@@ -1,0 +1,21 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.habit-modal {
+	border: none;
+	height: 30rem;
+	width: 30rem;
+	align-self: center;
+	justify-self: center;
+}
+
+.modal-form {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.button-wrapper {
+	display: flex;
+	gap: 2rem;
+}

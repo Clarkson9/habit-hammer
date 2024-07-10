@@ -10,7 +10,7 @@ const Home = () => {
 	};
 
 	return (
-		<div className="center-box">
+		<main className="center-box">
 			<div className="button-container">
 				<button
 					type="button"
@@ -25,7 +25,7 @@ const Home = () => {
 					<p className="button__text">Login</p>
 				</button>
 			</div>
-		</div>
+		</main>
 	);
 };
 
