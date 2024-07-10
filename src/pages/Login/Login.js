@@ -11,19 +11,17 @@ const Login = () => {
 					<input
 						type="text"
 						name="emailInput"
-						id="emailInput"
 						className="entry-form__input"
 						// onChange={handleChangeComment}
 						// value={comment}
-						placeholder="Enter your email"></input>
+						placeholder="Email"></input>
 					<input
 						type="text"
 						name="passwordInput"
-						id="passwordInput"
 						className="entry-form__input"
 						// onChange={handleChangeComment}
 						// value={comment}
-						placeholder="Enter your password"></input>
+						placeholder="Password"></input>
 					<button className="button button--entry" type="submit">
 						Login
 					</button>

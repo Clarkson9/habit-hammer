@@ -1,6 +1,15 @@
 @use "./styles/partials/variables" as *;
 @use "./styles/partials/mixins" as *;
 
+* {
+	// font-family: "Avenir", "Avenir Alt";
+}
+
+body {
+	color: $primary-black;
+	// background-color: $primary-white;
+}
+
 .center-box {
 	display: flex;
 	justify-content: center;
