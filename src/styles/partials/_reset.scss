@@ -1,0 +1,27 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+ol,
+ul,
+menu {
+	list-style: none;
+}
+
+a {
+	text-decoration: inherit;
+	color: inherit;
+}
+
+address {
+	font-style: inherit;
+}
+
+button {
+	background-color: initial;
+	cursor: pointer;
+	font-family: inherit;
+	border: none;
+}

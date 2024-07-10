@@ -1,0 +1,36 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.habit {
+	display: flex;
+	gap: 1rem;
+	justify-content: space-around;
+	border: 2px solid $primary-light;
+	padding: 0.5rem;
+
+	&-details {
+		display: flex;
+		flex-direction: column;
+		width: 50%;
+		gap: 0.5rem;
+
+		&__name {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		&__why {
+			display: flex;
+		}
+	}
+
+	&-stats {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+}
+
+.hidden {
+	visibility: hidden;
+}

@@ -1,0 +1,111 @@
+@use "./styles/partials/variables" as *;
+@use "./styles/partials/mixins" as *;
+
+body {
+	color: $primary-black;
+	background-color: $secondary-light;
+}
+
+.center-box {
+	display: flex;
+	justify-content: center;
+	padding: 4rem 0;
+	background-color: $secondary-light;
+}
+
+.form-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.button {
+	border: 2px solid $primary-black;
+	padding: 0.5rem 1rem;
+	// width: 5rem;
+	transition: background-color 0.15s, color 0.15s;
+
+	&:hover {
+		background-color: $primary-light;
+		color: $secondary-dark;
+	}
+
+	&:active {
+		transform: translateY(2px);
+	}
+	&--entry {
+		width: 100%;
+		margin-top: 1rem;
+	}
+
+	&--icon {
+		// transition: background-color 0.1s;
+
+		&:hover {
+			transform: scale(1.1);
+		}
+
+		&:active {
+			transform: translateY(2px);
+		}
+	}
+}
+
+.entry-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	border: 2px solid $primary-black;
+	padding: 3rem 0;
+	height: fit-content;
+	width: 50%;
+	gap: 2rem;
+	background-color: $secondary-dark;
+}
+
+.entry-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	padding: 1rem 0;
+	width: 75%;
+
+	&__input {
+		width: 100%;
+		padding: 0.5rem;
+	}
+}
+
+.swap-entry-form {
+	color: $primary-dark;
+	font-weight: 600;
+}
+
+.modal-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+	padding: 2rem;
+
+	&__input {
+		width: 100%;
+		padding: 0.5rem;
+		background-color: $secondary-light;
+
+		&::placeholder {
+			color: $primary-black;
+		}
+	}
+}
+
+.habit-modal {
+	border: none;
+	padding: 1rem 0;
+	width: 30rem;
+	align-self: center;
+	justify-self: center;
+	background-color: $secondary-dark;
+}
