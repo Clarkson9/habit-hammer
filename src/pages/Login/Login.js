@@ -6,6 +6,7 @@ import axios from "axios";
 
 const Login = () => {
 	const [errors, setErrors] = useState({});
+	const [wrongPassword, setWrongPassword] = useState(false);
 	const [formValues, setFormValues] = useState({
 		email: "",
 		password: "",
@@ -48,23 +49,7 @@ const Login = () => {
 				})
 				.catch((err) => {
 					console.log(err);
-					if (
-						err.response.data === `No user found with email ${formValues.email}`
-					) {
-						setErrors({
-							...errors,
-							unregistered_email: true,
-						});
-						// console.log(errors);
-					}
-
-					if (err.response.data === "Wrong password") {
-						setErrors({
-							...errors,
-							incorrect_password: true,
-						});
-						// console.log(errors);
-					}
+					if (err.response.status === 400) setWrongPassword(true);
 				});
 		}
 	};
