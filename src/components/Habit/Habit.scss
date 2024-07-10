@@ -1,0 +1,28 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.habit {
+	display: flex;
+	gap: 1rem;
+}
+
+.habit-details {
+	display: flex;
+	flex-direction: column;
+	width: 20rem;
+
+	&__name {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	&__why {
+		display: flex;
+		gap: 0.5rem;
+	}
+}
+
+.habit-stats {
+	display: flex;
+	flex-direction: column;
+}
