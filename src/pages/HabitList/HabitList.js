@@ -201,10 +201,15 @@ const HabitList = () => {
 							value={formValues.habit_why}
 							placeholder="Why"></input>
 						<div className="button-wrapper">
-							<button type="button" onClick={() => toggleModal(addHabitModal)}>
+							<button
+								className="button"
+								type="button"
+								onClick={() => toggleModal(addHabitModal)}>
 								Cancel
 							</button>
-							<button type="submit">+ Add new habit</button>
+							<button className="button" type="submit">
+								+ Add new habit
+							</button>
 						</div>
 					</form>
 				</dialog>

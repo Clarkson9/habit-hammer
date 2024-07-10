@@ -14,20 +14,22 @@ const Header = () => {
 	// ***** add handleLogout function *****
 
 	return location.pathname.includes("list") ? (
-		<div>
-			<div className="header">
-				<Link to="/">Habit Hammer</Link>
-				<button
-					type="button"
-					className="button"
-					onClick={() => handleLogout("/")}>
-					<p className="button__text">Logout</p>
-				</button>
-			</div>
+		<div className="header">
+			<Link className="logo" to="/">
+				Habit Hammer
+			</Link>
+			<button
+				type="button"
+				className="button"
+				onClick={() => handleLogout("/")}>
+				<p className="button__text">Logout</p>
+			</button>
 		</div>
 	) : (
 		<div className="header">
-			<Link to="/">Habit Hammer</Link>
+			<Link className="logo" to="/">
+				Habit Hammer
+			</Link>
 		</div>
 	);
 };

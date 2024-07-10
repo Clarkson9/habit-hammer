@@ -64,7 +64,7 @@ const Signup = () => {
 
 	return (
 		<div className="center-box">
-			<div className="form-container">
+			<div className="entry-container">
 				<h1>Signup</h1>
 				<form className="entry-form" onSubmit={handleSubmit}>
 					<input
@@ -100,7 +100,10 @@ const Signup = () => {
 					</button>
 				</form>
 				<p>
-					Already have an account? <Link to="/login">Login</Link>
+					Already have an account?{" "}
+					<Link className="swap-entry-form" to="/login">
+						Login
+					</Link>
 				</p>
 			</div>
 		</div>

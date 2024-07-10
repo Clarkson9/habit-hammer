@@ -56,7 +56,7 @@ const Login = () => {
 
 	return (
 		<div className="center-box">
-			<div className="form-container">
+			<div className="entry-container">
 				<h1>Login</h1>
 				<form className="entry-form" onSubmit={handleSubmit}>
 					<input
@@ -78,7 +78,10 @@ const Login = () => {
 					</button>
 				</form>
 				<p>
-					Don't have an account? <Link to="/signup">Signup</Link>
+					Don't have an account?{" "}
+					<Link className="swap-entry-form" to="/signup">
+						Signup
+					</Link>
 				</p>
 			</div>
 		</div>
