@@ -1,9 +1,12 @@
 import "./Habit.scss";
 
-const Habit = ({ habit }) => {
+const Habit = ({ habit, handleDeleteHabit }) => {
 	return (
 		<div className="habit">
-			<button className="delete-button" type="button">
+			<button
+				className="delete-button"
+				type="button"
+				onClick={() => handleDeleteHabit(habit.id)}>
 				Delete
 			</button>
 			<div className="habit-details">

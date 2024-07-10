@@ -76,10 +76,8 @@ const HabitList = () => {
 							},
 						})
 						.then((response) => {
-							// console.log(response.data);
 							setHabitList(response.data);
 						});
-					// console.log(response.data);
 					toggleModal(addHabitModal);
 				})
 				.catch((err) => {
@@ -87,6 +85,26 @@ const HabitList = () => {
 					// if (err.response.status === 400) setWrongPassword(true);
 				});
 		}
+	};
+
+	const handleDeleteHabit = (id) => {
+		axios
+			.delete(`http://localhost:8080/habit/${id}`, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			})
+			.then(() => {
+				axios
+					.get("http://localhost:8080/habit", {
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					})
+					.then((response) => {
+						setHabitList(response.data);
+					});
+			});
 	};
 
 	return (
@@ -97,7 +115,10 @@ const HabitList = () => {
 						? habitList.map((habit) => {
 								return (
 									<li className="habit-list-item" key={habit.id}>
-										<Habit habit={habit} />
+										<Habit
+											habit={habit}
+											handleDeleteHabit={handleDeleteHabit}
+										/>
 									</li>
 								);
 						  })
