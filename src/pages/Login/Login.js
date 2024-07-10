@@ -7,12 +7,12 @@ const Login = () => {
 		<div className="center-box">
 			<div className="form-container">
 				<h1>Login</h1>
-				<form className="login-form">
+				<form className="entry-form">
 					<input
 						type="text"
 						name="emailInput"
 						id="emailInput"
-						className="login__input"
+						className="entry-form__input"
 						// onChange={handleChangeComment}
 						// value={comment}
 						placeholder="Enter your email"></input>
@@ -20,7 +20,7 @@ const Login = () => {
 						type="text"
 						name="passwordInput"
 						id="passwordInput"
-						className="login__input"
+						className="entry-form__input"
 						// onChange={handleChangeComment}
 						// value={comment}
 						placeholder="Enter your password"></input>
