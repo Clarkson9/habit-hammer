@@ -24,7 +24,10 @@ const HabitList = () => {
 					Authorization: `Bearer ${token}`,
 				},
 			})
-			.then((response) => console.log(response.data));
+			.then((response) => {
+				// console.log(response.data);
+				setHabitList(response.data);
+			});
 	}, []);
 
 	const addHabitModal = useRef(null);
@@ -34,6 +37,10 @@ const HabitList = () => {
 		ref.current.hasAttribute("open")
 			? ref.current.close()
 			: ref.current.showModal();
+	};
+
+	const updateHabitList = (newList) => {
+		setHabitList(newList);
 	};
 
 	const handleChangeState = (event) => {
@@ -64,10 +71,17 @@ const HabitList = () => {
 						Authorization: `Bearer ${token}`,
 					},
 				})
-				.then((response) => {
-					console.log(response.data);
+				.then(() => {
+					axios
+						.get("http://localhost:8080/habit", {
+							headers: {
+								Authorization: `Bearer ${token}`,
+							},
+						})
+						.then((response) => {
+							setHabitList(response.data);
+						});
 					toggleModal(addHabitModal);
-					// navigate("/list");
 				})
 				.catch((err) => {
 					console.log(err);
@@ -76,87 +90,119 @@ const HabitList = () => {
 		}
 	};
 
+	const handleDeleteHabit = (id) => {
+		axios
+			.delete(`http://localhost:8080/habit/${id}`, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			})
+			.then(() => {
+				axios
+					.get("http://localhost:8080/habit", {
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					})
+					.then((response) => {
+						setHabitList(response.data);
+					});
+			});
+	};
+
+	const handleCompleteHabit = (id) => {
+		axios
+			.put(`http://localhost:8080/habit/${id}/complete`, formValues, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			})
+			.then(() => {
+				axios
+					.get("http://localhost:8080/habit", {
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					})
+					.then((response) => {
+						setHabitList(response.data);
+					});
+			});
+	};
+
 	return (
 		<main className="center-box">
-			{/* <Habit /> */}
-
-			{/* on click trigger modal */}
-			<button
-				type="button"
-				className="button"
-				onClick={() => toggleModal(addHabitModal)}>
-				+ Add a new habit
-			</button>
-			{/* <button
+			<div className="habit-list-wrapper">
+				<ul className="habit-list">
+					{habitList.map((habit) => {
+						return (
+							<li className="habit-list-item" key={habit.id}>
+								<Habit
+									habit={habit}
+									toggleModal={toggleModal}
+									handleDeleteHabit={handleDeleteHabit}
+									handleCompleteHabit={handleCompleteHabit}
+									updateHabitList={updateHabitList}
+								/>
+							</li>
+						);
+					})}
+					{/* {activeVideo.comments.map((comment) => (
+						<li className="comment__container" key={comment.id}>
+							<Comment
+								handleDeleteComment={handleDeleteComment}
+								handleLikeComment={handleLikeComment}
+								comment={comment}
+								formatDate={formatDate}
+							/>
+						</li>
+					))} */}
+				</ul>
+				<button
+					type="button"
+					className="add-habit-button button"
+					onClick={() => toggleModal(addHabitModal)}>
+					+ Add a new habit
+				</button>
+				{/* <button
 				type="button"
 				className="button"
 				onClick={() => toggleModal(editHabitModal)}>
 				+ Temp edit
 			</button> */}
-			<dialog
-				className="habit-modal"
-				ref={addHabitModal}
-				onClick={(e) => {
-					if (e.currentTarget === e.target) {
-						toggleModal(addHabitModal);
-					}
-				}}>
-				<form className="modal-form" onSubmit={handleAddHabit}>
-					<h2>Add a new habit to your list</h2>
-					<input
-						type="text"
-						name="habit_name"
-						className="modal-form__input"
-						onChange={handleChangeState}
-						value={formValues.habit_name}
-						placeholder="Habit"></input>
-					<input
-						type="text"
-						name="habit_why"
-						className="modal-form__input"
-						onChange={handleChangeState}
-						value={formValues.habit_why}
-						placeholder="Why"></input>
-					<div className="button-wrapper">
-						<button type="button" onClick={() => toggleModal(addHabitModal)}>
-							Cancel
-						</button>
-						<button type="submit">+ Add new habit</button>
-					</div>
-				</form>
-			</dialog>
-			<dialog
-				className="habit-modal"
-				ref={editHabitModal}
-				onClick={(e) => {
-					if (e.currentTarget === e.target) {
-						toggleModal(editHabitModal);
-					}
-				}}>
-				<form className="modal-form">
-					<h2>Edit Habit</h2>
-					<input
-						type="text"
-						name="habit_name"
-						className="modal-form__input"
-						onChange={handleChangeState}
-						value={formValues.habit_name}
-						placeholder="Habit"></input>
-					<input
-						type="text"
-						name="habit_why"
-						className="modal-form__input"
-						onChange={handleChangeState}
-						value={formValues.habit_why}
-						placeholder="Why"></input>
-					<div className="button-wrapper">
-						<button type="button" onClick={() => toggleModal(addHabitModal)}>
-							Cancel
-						</button>
-						<button type="submit">Save</button>
-					</div>
-				</form>
-			</dialog>
+				<dialog
+					className="habit-modal"
+					ref={addHabitModal}
+					onClick={(e) => {
+						if (e.currentTarget === e.target) {
+							toggleModal(addHabitModal);
+						}
+					}}>
+					<form className="modal-form" onSubmit={handleAddHabit}>
+						<h2>Add a new habit to your list</h2>
+						<input
+							type="text"
+							name="habit_name"
+							className="modal-form__input"
+							onChange={handleChangeState}
+							value={formValues.habit_name}
+							placeholder="Habit"></input>
+						<input
+							type="text"
+							name="habit_why"
+							className="modal-form__input"
+							onChange={handleChangeState}
+							value={formValues.habit_why}
+							placeholder="Why"></input>
+						<div className="button-wrapper">
+							<button type="button" onClick={() => toggleModal(addHabitModal)}>
+								Cancel
+							</button>
+							<button type="submit">+ Add new habit</button>
+						</div>
+					</form>
+				</dialog>
+			</div>
 		</main>
 	);
 };

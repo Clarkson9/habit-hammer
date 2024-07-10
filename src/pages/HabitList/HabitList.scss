@@ -1,6 +1,18 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
+.habit-list-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.habit-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
 .habit-modal {
 	border: none;
 	height: 30rem;
@@ -18,4 +30,9 @@
 .button-wrapper {
 	display: flex;
 	gap: 2rem;
+}
+
+.add-habit-button {
+	align-self: center;
+	width: 33%;
 }
