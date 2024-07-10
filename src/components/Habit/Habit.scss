@@ -14,13 +14,16 @@
 
 	&__name {
 		display: flex;
-		gap: 0.5rem;
+		justify-content: space-between;
 	}
 
 	&__why {
 		display: flex;
-		gap: 0.5rem;
 	}
+}
+
+.hidden {
+	visibility: hidden;
 }
 
 .habit-stats {
