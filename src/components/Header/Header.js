@@ -6,7 +6,8 @@ const Header = () => {
 	let navigate = useNavigate();
 	const location = useLocation();
 
-	const handleNavigate = (endpoint) => {
+	const handleLogout = (endpoint) => {
+		localStorage.removeItem("authToken");
 		navigate(endpoint);
 	};
 
@@ -19,7 +20,7 @@ const Header = () => {
 				<button
 					type="button"
 					className="button"
-					onClick={() => handleNavigate("/")}>
+					onClick={() => handleLogout("/")}>
 					<p className="button__text">Logout</p>
 				</button>
 			</div>

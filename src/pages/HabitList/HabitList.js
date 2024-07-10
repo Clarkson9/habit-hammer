@@ -17,17 +17,23 @@ const HabitList = () => {
 	const navigate = useNavigate();
 
 	const token = localStorage.getItem("authToken");
+
 	useEffect(() => {
-		axios
-			.get("http://localhost:8080/habit", {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			})
-			.then((response) => {
-				// console.log(response.data);
-				setHabitList(response.data);
-			});
+		if (!token) {
+			navigate("/");
+		} else {
+			axios
+				.get("http://localhost:8080/habit", {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				})
+				.then((response) => {
+					// console.log(response.data);
+					setHabitList(response.data);
+				})
+				.catch((err) => console.log(err));
+		}
 	}, []);
 
 	const addHabitModal = useRef(null);
