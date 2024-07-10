@@ -16,8 +16,8 @@ const Habit = ({
 }) => {
 	const [isDisabled, setIsDisabled] = useState(false);
 	const [formValues, setFormValues] = useState({
-		habit_name: "",
-		habit_why: "",
+		habit_name: habit.habit_name,
+		habit_why: habit.habit_why,
 	});
 
 	console.log(habit);
@@ -85,7 +85,7 @@ const Habit = ({
 				className="delete-button"
 				type="button"
 				onClick={() => handleDeleteHabit(habit.id)}>
-				<img src={deleteIcon} alt="Delete icon" />
+				<img className="button--icon" src={deleteIcon} alt="Delete icon" />
 			</button>
 			<div className="habit-details">
 				<div className="habit-details__name">
@@ -99,13 +99,13 @@ const Habit = ({
 				className="edit-button"
 				type="button"
 				onClick={() => toggleModal(editHabitModal)}>
-				<img src={editIcon} alt="Edit icon" />
+				<img className="button--icon" src={editIcon} alt="Edit icon" />
 			</button>
 			<button
 				className={isToday(habit.last_complete) ? "hidden" : "complete-button"}
 				type="button"
 				onClick={() => handleCompleteHabit(habit.id)}>
-				<img src={checkIcon} alt="Check icon" />
+				<img className="button--icon" src={checkIcon} alt="Check icon" />
 			</button>
 			<div className="habit-stats">
 				<div className="habit-stats__streak">
