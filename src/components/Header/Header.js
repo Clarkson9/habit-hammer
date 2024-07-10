@@ -27,20 +27,6 @@ const Header = () => {
 	) : (
 		<div className="header">
 			<Link to="/">Habit Hammer</Link>
-			{/* <div className="button-wrapper">
-				<button
-					type="button"
-					className="button"
-					onClick={() => handleNavigate("/signup")}>
-					<p className="button__text">Signup</p>
-				</button>
-				<button
-					type="button"
-					className="button"
-					onClick={() => handleNavigate("/login")}>
-					<p className="button__text">Login</p>
-				</button> 
-			</div>*/}
 		</div>
 	);
 };
