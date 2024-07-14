@@ -2,6 +2,8 @@ import "./Header.scss";
 
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
+import logo from "../../assets/logo/habit-hammer.svg";
+
 const Header = () => {
 	let navigate = useNavigate();
 	const location = useLocation();
@@ -16,7 +18,7 @@ const Header = () => {
 	return location.pathname.includes("list") ? (
 		<div className="header">
 			<Link className="logo" to="/">
-				Habit Hammer
+				<img src={logo} alt="Habit hammer logo" /> Habit Hammer
 			</Link>
 			<button
 				type="button"
