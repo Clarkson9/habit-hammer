@@ -18,7 +18,8 @@ const Header = () => {
 	return location.pathname.includes("list") ? (
 		<div className="header">
 			<Link className="logo" to="/">
-				<img src={logo} alt="Habit hammer logo" /> Habit Hammer
+				<img className="logo-icon" src={logo} alt="Habit hammer logo" /> Habit
+				Hammer
 			</Link>
 			<button
 				type="button"
@@ -30,6 +31,7 @@ const Header = () => {
 	) : (
 		<div className="header">
 			<Link className="logo" to="/">
+				<img className="logo-icon" src={logo} alt="Habit hammer logo" />
 				Habit Hammer
 			</Link>
 		</div>

@@ -11,4 +11,11 @@
 
 .logo {
 	font-size: 2rem;
+	display: flex;
+	align-items: baseline;
+	gap: 0.5rem;
+
+	&-icon {
+		height: 2rem;
+	}
 }
