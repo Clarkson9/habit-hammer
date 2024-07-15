@@ -59,6 +59,10 @@ const Login = () => {
 			<div className="entry-container">
 				<h1>Login</h1>
 				<form className="entry-form" onSubmit={handleSubmit}>
+					<p
+						className={wrongPassword ? "password password--wrong" : "password"}>
+						Email or Password is incorrect.
+					</p>
 					<input
 						type="text"
 						name="email"

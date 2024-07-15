@@ -13,8 +13,6 @@ const Header = () => {
 		navigate(endpoint);
 	};
 
-	// ***** add handleLogout function *****
-
 	return location.pathname.includes("list") ? (
 		<div className="header">
 			<Link className="logo" to="/">

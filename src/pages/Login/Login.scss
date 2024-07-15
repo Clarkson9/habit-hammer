@@ -1,2 +1,13 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
+
+.password {
+	align-self: flex-start;
+	color: $error-highlight;
+	display: none;
+	margin-bottom: -0.5rem;
+
+	&--wrong {
+		display: block;
+	}
+}
