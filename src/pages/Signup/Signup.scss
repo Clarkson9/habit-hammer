@@ -1,6 +1,16 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
+.password-signup {
+	align-self: flex-start;
+	color: $error-highlight;
+	display: none;
+
+	&--mismatch {
+		display: block;
+	}
+}
+
 .email {
 	align-self: flex-start;
 	color: $error-highlight;

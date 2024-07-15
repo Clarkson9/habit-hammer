@@ -39,10 +39,12 @@ const Signup = () => {
 		if (!emailRegex.test(formValues.email)) formErrors.invalid_email = true;
 		if (!formValues.password) formErrors.password = true;
 		if (!formValues.password_confirm) formErrors.password_confirm = true;
+		if (formValues.password != formValues.password_confirm)
+			formErrors.password_mismatch = true;
 		setErrors(formErrors);
 
 		if (Object.keys(formErrors).length === 0) {
-			// No errors, form is valid
+			// No errors, form is valid --> reset errors
 			axios
 				.post("http://localhost:8080/user/register", formValues)
 				.then((response) => {
@@ -81,6 +83,14 @@ const Signup = () => {
 						onChange={handleChangeState}
 						value={formValues.email}
 						placeholder="Email"></input>
+					<p
+						className={
+							errors.password_mismatch
+								? "password-signup password-signup--mismatch"
+								: "password-signup"
+						}>
+						Passwords do not match
+					</p>
 					<input
 						type="password"
 						name="password"
