@@ -76,6 +76,14 @@ const Signup = () => {
 						onChange={handleChangeState}
 						value={formValues.first_name}
 						placeholder="First name"></input>
+					<p
+						className={
+							errors.invalid_email
+								? "email-signup email-signup--invalid"
+								: "email-signup"
+						}>
+						That is not a valid email address
+					</p>
 					<input
 						type="text"
 						name="email"
