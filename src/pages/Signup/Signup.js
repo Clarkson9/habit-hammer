@@ -95,6 +95,9 @@ const Signup = () => {
 						onChange={handleChangeState}
 						value={formValues.password_confirm}
 						placeholder="Confirm password"></input>
+					<p className={errors.taken_email ? "email email--taken" : "email"}>
+						A user with that email already exists
+					</p>
 					<button className="button button--entry" type="submit">
 						Signup
 					</button>

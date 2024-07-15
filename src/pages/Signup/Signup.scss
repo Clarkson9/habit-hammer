@@ -1,2 +1,12 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
+
+.email {
+	align-self: flex-start;
+	color: $error-highlight;
+	display: none;
+
+	&--taken {
+		display: block;
+	}
+}
